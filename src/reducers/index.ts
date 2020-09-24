@@ -25,8 +25,9 @@ const conveyorReducerMap = {
 
 export class ConveyorReducer {
   constructor(schema: SchemaBuilder, overrides?: any) {
+    const identity: (value: any) => any = R.identity
     const mergedReducerMap = R.filter(
-      R.identity,
+      identity,
       R.mergeRight(conveyorReducerMap, overrides)
     )
     R.forEachObjIndexed((Reducer, key) => {

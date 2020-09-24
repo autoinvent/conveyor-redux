@@ -19,7 +19,7 @@ export class TooltipReducer extends Reducer {
 
     for (const fieldName in result) {
       // @ts-ignore
-      const value = R.prop(fieldName, result)
+      const value: node = R.prop(fieldName, result)
       // todo: add 'node' and/or 'data' props into 'schema.getFieldLabel'
       const name = this.schema.getFieldLabel({ modelName, fieldName })
       const type = this.schema.getType(modelName, fieldName)
@@ -70,12 +70,13 @@ export class TooltipReducer extends Reducer {
           modelName: relModelName,
           node: value
         })
+        const getId: (value: any) => string = R.prop('id')
         tooltipData.push({
           name,
           value: [
             {
               text,
-              url: `/${relModelName}/${R.prop('id', value)}`
+              url: `/${relModelName}/${getId(value)}`
             }
           ]
         })
