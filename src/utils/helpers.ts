@@ -135,11 +135,6 @@ export const editFieldToQueryInput = ({
     return R.propOr(null, 'value', value)
   } else if (type === 'enum') {
     return R.propOr(null, 'value', value)
-  } else if (type === 'file') {
-    if (R.isNil(value)) {
-      return value
-    }
-    return storeValueToArrayBuffer(value)
   } else if (type === 'boolean') {
     return typeof value === typeof false ? value : false
   }

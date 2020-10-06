@@ -29,7 +29,8 @@ export class CreateReducer extends Reducer {
   }
 
   [CREATE_INPUT_CHANGE](state: any, action: any) {
-    return handleCreateInputChange(state, action)
+    const out = handleCreateInputChange(state, action)
+    return out
   }
 
   [CANCEL_CREATE](state: any) {
