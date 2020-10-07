@@ -3,7 +3,8 @@ import {
   UPDATE_MODEL_INDEX,
   UPDATE_MODEL_DETAIL,
   UPDATE_DELETE_MODEL,
-  REMOVE_INSTANCE
+  REMOVE_INSTANCE,
+  MODEL_NOT_FOUND
 } from '../actionConsts'
 import { initState, updateIndex, getDefaultModelStore } from '../utils/model'
 import { SchemaBuilder } from '@autoinvent/conveyor-schema'
@@ -12,6 +13,11 @@ import { Reducer } from './reducer'
 export class ModelReducer extends Reducer {
   constructor(schema: SchemaBuilder) {
     super(schema, initState)
+  }
+
+  [MODEL_NOT_FOUND](state: any, action: any) {
+    const modelName = R.path(['payload', 'modelName'], action) as string
+    return { ...state, [modelName]: 'NOTFOUND' }
   }
 
   [UPDATE_MODEL_INDEX](state: any, action: any) {
