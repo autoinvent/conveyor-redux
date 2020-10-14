@@ -38,6 +38,13 @@ export class ModelEpic extends Epic {
             tableView: selectTableView(state$.value)
           })
         }
+        const model = this.schema.getModel(payload.modelName as string)
+        const paginate = R.propOr(true, 'paginate', model)
+        if (paginate === false)
+          return {
+            modelName: payload.modelName,
+            variables: R.omit(['page'], variables)
+          }
         return { modelName: payload.modelName, variables }
       }),
       mergeMap((context: any) => {

@@ -33,9 +33,11 @@ export const getPaginatedNode = (
   if (node) {
     for (const [fieldName, obj] of Object.entries(node)) {
       const type = schema.getType(modelName, fieldName)
+      const model = schema.getModel(modelName)
+      const paginate = R.pathOr(true, ['fields', fieldName, 'paginate'], model)
 
       // if multi-rel type
-      if (type && type.includes('ToMany') && !R.isEmpty(obj)) {
+      if (type && type.includes('ToMany') && !R.isEmpty(obj) && paginate) {
         const idx = R.pathOr(
           1,
           [modelName, 'fields', fieldName, 'page', 'currentPage'],
