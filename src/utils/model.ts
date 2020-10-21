@@ -29,7 +29,7 @@ export const getPaginatedNode = (
   const node = R.pathOr(null, ['values', id], modelStore)
 
   // do not change the redux store
-  const updatedNode = modelStore === 'NOTFOUND' ? null : {}
+  const updatedNode = modelStore === null ? null : {}
   if (node) {
     for (const [fieldName, obj] of Object.entries(node)) {
       const type = schema.getType(modelName, fieldName)

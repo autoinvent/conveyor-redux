@@ -17,7 +17,7 @@ export class ModelReducer extends Reducer {
 
   [MODEL_NOT_FOUND](state: any, action: any) {
     const modelName = R.path(['payload', 'modelName'], action) as string
-    return { ...state, [modelName]: 'NOTFOUND' }
+    return { ...state, [modelName]: null }
   }
 
   [UPDATE_MODEL_INDEX](state: any, action: any) {
