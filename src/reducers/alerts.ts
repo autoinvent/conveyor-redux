@@ -20,7 +20,10 @@ export class AlertsReducer extends Reducer {
   [ADD_SUCCESS_ALERT](state: any, action: any) {
     return [...state, handleError({ payload: action.payload, type: 'success' })]
   }
-  [ADD_ALERT](state: any, action: any) {}
+  [ADD_ALERT](state: any, action: any) {
+    const alertType = R.pathOr('success', ['alert', 'type'], action.payload)
+    return [...state, handleError({ payload: action.payload, type: alertType })]
+  }
   [DISMISS_ALERT](state: any, action: any) {
     return state.filter(
       (obj: any) =>
