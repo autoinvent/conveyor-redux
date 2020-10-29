@@ -7,8 +7,6 @@ import {
   CHANGE_REL_TABLE_PAGE,
   CHANGE_GOTO_PAGE,
   CHANGE_REL_GOTO_PAGE,
-  UPDATE_OVERVIEW_DISPLAYED,
-  UPDATE_OVERVIEW_SELECTED,
   INDEX_TABLE_SORT_CHANGE,
   INDEX_TABLE_FILTER_SUBMIT,
   COLLAPSE_TABLE_CHANGE,
@@ -271,15 +269,5 @@ export class TableViewReducer extends Reducer {
       }
     }
     return state
-  }
-
-  // todo: not necessary in conveyor-redux: delete?
-  [UPDATE_OVERVIEW_DISPLAYED](state: any, action: any) {
-    return setValues(state, R.prop('payload', action), 'selected')
-  }
-
-  // todo: not necessary in conveyor-redux: delete?
-  [UPDATE_OVERVIEW_SELECTED](state: any, action: any) {
-    return setValues(state, R.prop('payload', action), 'displayed')
   }
 }

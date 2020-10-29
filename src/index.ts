@@ -14,13 +14,17 @@ export { ConveyorReducer } from './reducers'
 export { AlertsReducer } from './reducers/alerts'
 export { CreateReducer } from './reducers/create'
 export { EditReducer } from './reducers/edit'
+export { ModalReducer } from './reducers/modal'
 export { ModelReducer } from './reducers/model'
+export { OptionsReducer } from './reducers/options'
 export { SearchReducer } from './reducers/search'
+export { TableViewReducer } from './reducers/tableView'
+export { TooltipReducer } from './reducers/tooltip'
 export { selectAlerts } from './utils/alerts'
-export { handleDetailCreate } from './utils/create'
+export { handleDetailCreate, selectCreate } from './utils/create'
 export { selectEdit } from './utils/edit'
 export { mergeConveyorActions } from './utils/mergeActions'
-export { selectModal } from './utils/modal'
+export { selectModal, selectModalStore } from './utils/modal'
 export {
   getPaginatedNode,
   getTabIdentifier,
@@ -28,8 +32,9 @@ export {
   getOrderedValues,
   selectModel
 } from './utils/model'
-export { selectOptions, filterSelectOptions } from './utils/options'
+export { selectOptions, filterSelectOptions, getOptions } from './utils/options'
 export {
+  selectSearch,
   selectSearchDropdown,
   selectSearchQueryText,
   selectSearchEntries
