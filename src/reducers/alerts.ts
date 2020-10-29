@@ -2,6 +2,7 @@ import { initState, handleError } from '../utils/alerts'
 import {
   ADD_DANGER_ALERT,
   ADD_SUCCESS_ALERT,
+  ADD_ALERT,
   DISMISS_ALERT
 } from '../actionConsts'
 import { SchemaBuilder } from '@autoinvent/conveyor-schema'
@@ -19,6 +20,7 @@ export class AlertsReducer extends Reducer {
   [ADD_SUCCESS_ALERT](state: any, action: any) {
     return [...state, handleError({ payload: action.payload, type: 'success' })]
   }
+  [ADD_ALERT](state: any, action: any) {}
   [DISMISS_ALERT](state: any, action: any) {
     return state.filter(
       (obj: any) =>
