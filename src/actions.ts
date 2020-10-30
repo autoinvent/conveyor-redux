@@ -127,6 +127,7 @@ export const relationshipSelectMenuOpen = actionDisp(
 
 export const addDangerAlert = actionDisp(Actions.ADD_DANGER_ALERT)
 export const addSuccessAlert = actionDisp(Actions.ADD_SUCCESS_ALERT)
+export const addAlert = actionDisp(Actions.ADD_ALERT)
 export const dismissAlert = actionDisp(Actions.DISMISS_ALERT)
 
 // validation
