@@ -19,8 +19,7 @@ import {
 import {
   initState,
   DEFAULT_PAGINATION_AMT,
-  removeAll,
-  setValues
+  removeAll
 } from '../utils/tableView'
 import { SchemaBuilder } from '@autoinvent/conveyor-schema'
 import { Reducer } from './reducer'
