@@ -23,7 +23,10 @@ export class AlertsReducer extends Reducer {
   [ADD_ALERT](state: any, action: any) {
     const alertType = R.prop('type', action.payload)
     // @ts-ignore
-    return [...state, handleError({ payload: action.payload, type: typeof alertType === 'string' ? alertType : 'success' })]
+    return [...state, handleError({
+      payload: action.payload,
+      type: typeof alertType === 'string' ? alertType : 'success'
+    })]
   }
   [DISMISS_ALERT](state: any, action: any) {
     return state.filter(
