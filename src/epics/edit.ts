@@ -182,7 +182,7 @@ export class EditEpic extends Epic {
 
         // images exist
         if (!R.isEmpty(R.prop('inputWithFile', context))) {
-          const path: string[] = ['update' + context.modelName, 'result', 'id']
+          const path: string[] = ['result', 'id']
 
           actions = R.append(
             Actions.onInlineFileSubmit({
