@@ -20,7 +20,7 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
-    "@types/ramda": "^0.26.43",
+    "@types/ramda": "^0.27.19",
     "@types/react-redux": "^7.1.7",
     "@types/react-router": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^2.23.0",

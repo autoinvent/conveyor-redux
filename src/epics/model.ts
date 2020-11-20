@@ -38,6 +38,13 @@ export class ModelEpic extends Epic {
             tableView: selectTableView(state$.value)
           })
         }
+        const model = this.schema.getModel(payload.modelName as string)
+        const paginate = R.propOr(true, 'paginate', model)
+        if (paginate === false)
+          return {
+            modelName: payload.modelName,
+            variables: R.omit(['page'], variables)
+          }
         return { modelName: payload.modelName, variables }
       }),
       mergeMap((context: any) => {
@@ -82,20 +89,25 @@ export class ModelEpic extends Epic {
           .sendRequest({ query, variables: context.variables })
           .then(({ data, error }) => ({ context, data, error }))
       }),
-      map(
-        ({ context, data, error }: { context: any; data: any; error: any }) => {
-          if (error) {
-            return Actions.addDangerAlert({
+      switchMap(({ context, data, error }): any => {
+        if (error) {
+          return concat([
+            Actions.addDangerAlert({
               message: `Error loading ${context.modelName} details.`
+            }),
+            Actions.modelNotFound({
+              modelName: context.modelName
             })
-          }
-          return Actions.updateModelDetail({
+          ])
+        }
+        return concat([
+          Actions.updateModelDetail({
             modelName: context.modelName,
             id: context.id,
             data
           })
-        }
-      )
+        ])
+      })
     )
   }
 

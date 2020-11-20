@@ -45,12 +45,13 @@ export const handleDetailCreate = (
   const payload = R.prop('payload', action)
   const node = R.prop('node', payload)
   const targetInverseFieldName = R.prop('targetInverseFieldName', payload)
-  const parentModelName = R.pipe(
+  const getParentModelName: (payload: object) => string = R.pipe(
     // @ts-ignore
     R.prop('path'),
     R.split('/'),
     R.nth(1)
-  )(payload)
+  )
+  const parentModelName = getParentModelName(payload)
   const parentName = schema.getDisplayValue({
     modelName: parentModelName,
     node

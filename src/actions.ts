@@ -80,12 +80,6 @@ export const indexTableFilterDropdown = actionDisp(
   Actions.INDEX_TABLE_FILTER_DROPDOWN
 )
 export const indexTableSortChange = actionDisp(Actions.INDEX_TABLE_SORT_CHANGE)
-export const updateOverviewDisplayed = actionDisp(
-  Actions.UPDATE_OVERVIEW_DISPLAYED
-)
-export const updateOverviewSelected = actionDisp(
-  Actions.UPDATE_OVERVIEW_SELECTED
-)
 export const changeRelTablePage = actionDisp(Actions.CHANGE_REL_TABLE_PAGE)
 export const changeGotoPage = actionDisp(Actions.CHANGE_GOTO_PAGE)
 export const changeRelGotoPage = actionDisp(Actions.CHANGE_REL_GOTO_PAGE)
@@ -96,6 +90,7 @@ export const fetchModelDetail = actionDisp(Actions.FETCH_MODEL_DETAIL)
 export const fetchModelIndex = actionDisp(Actions.FETCH_MODEL_INDEX)
 export const updateModelDetail = actionDisp(Actions.UPDATE_MODEL_DETAIL)
 export const updateModelIndex = actionDisp(Actions.UPDATE_MODEL_INDEX)
+export const modelNotFound = actionDisp(Actions.MODEL_NOT_FOUND)
 export const requestDeleteModel = actionDisp(Actions.REQUEST_DELETE_MODEL)
 export const updateDeleteModel = actionDisp(Actions.UPDATE_DELETE_MODEL)
 export const requestDeleteRelTableModel = actionDisp(
@@ -132,6 +127,7 @@ export const relationshipSelectMenuOpen = actionDisp(
 
 export const addDangerAlert = actionDisp(Actions.ADD_DANGER_ALERT)
 export const addSuccessAlert = actionDisp(Actions.ADD_SUCCESS_ALERT)
+export const addAlert = actionDisp(Actions.ADD_ALERT)
 export const dismissAlert = actionDisp(Actions.DISMISS_ALERT)
 
 // validation

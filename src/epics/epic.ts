@@ -12,15 +12,30 @@ export class Epic {
 
   makeEpic() {
     const epics: ROEpic[] = []
-    R.forEach(methodName => {
-      if (!R.includes(methodName, ['constructor', 'makeEpic'])) {
-        const epic: ROEpic = (action$, state$) =>
-          // @ts-ignore
-          this[methodName](action$, state$)
-        Object.defineProperty(epic, 'name', { value: this.constructor.name })
-        epics.push(epic)
-      }
-    }, Object.getOwnPropertyNames(Object.getPrototypeOf(this)))
+    const methods = new Set()
+    let obj: Record<string, any> = this //eslint-disable-line
+    do {
+      obj = Object.getPrototypeOf(obj)
+      Object.getOwnPropertyNames(obj).forEach(name => methods.add(name))
+    } while (Object.getPrototypeOf(obj).constructor.name != 'Epic')
+    R.forEach(
+      methodName => {
+        if (
+          !R.includes(methodName, [
+            'constructor',
+            'makeEpic',
+            '__reactstandin__regenerateByEval'
+          ])
+        ) {
+          const epic: ROEpic = (action$, state$) =>
+            // @ts-ignore
+            this[methodName](action$, state$)
+          Object.defineProperty(epic, 'name', { value: this.constructor.name })
+          epics.push(epic)
+        }
+      },
+      [...methods]
+    )
     return epics
   }
 }

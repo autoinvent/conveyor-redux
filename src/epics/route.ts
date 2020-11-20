@@ -12,12 +12,13 @@ export class RouteEpic extends Epic {
       ofType(LOCATION_CHANGE),
       map(getPath),
       switchMap(path => {
-        const actions = R.pipe(
+        const pipeActions: (obArray: [object]) => [object] = R.pipe(
           R.ap(pathFunctions),
           // @ts-ignore
           R.reject(R.equals(undefined)),
           R.flatten
-        )([{ path, schema: this.schema }])
+        )
+        const actions = pipeActions([{ path, schema: this.schema }])
         return concat(actions)
       })
     )
