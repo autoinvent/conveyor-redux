@@ -105,6 +105,7 @@ export class SearchReducer extends Reducer {
 
     const searchPageFilters = R.map((modelName: string) => ({
       modelName,
+      displayLabel: this.schema.getModelLabelPlural({ modelName }),
       checked: R.propOr(true, 'checked', getFilterObj(modelName)),
       count: R.propOr(0, modelName, modelCounts)
     }))(uniqModels)
